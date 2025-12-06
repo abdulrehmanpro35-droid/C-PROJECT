@@ -1,0 +1,273 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+// ---------------------- CLEAR SCREEN (Safe for All Compilers) ----------------------
+void clearScreen() {
+    for (int i = 0; i < 40; i++)
+        cout << "\n";
+}
+
+// ---------------------- MATH FUNCTIONS ----------------------
+
+void determinant() {
+    int a, b, c, d;
+    cout << "\nEnter matrix elements:\n";
+    cout << "a = "; cin >> a;
+    cout << "b = "; cin >> b;
+    cout << "c = "; cin >> c;
+    cout << "d = "; cin >> d;
+
+    int det = (a * d) - (b * c);
+    cout << "\nDeterminant = " << det << endl;
+}
+
+void distanceBetweenPoints() {
+    double x1, y1, x2, y2;
+    cout << "\nEnter x1 y1: "; cin >> x1 >> y1;
+    cout << "Enter x2 y2: "; cin >> x2 >> y2;
+
+    double dist = sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2));
+    cout << "\nDistance = " << dist << endl;
+}
+
+void areaPerimeter() {
+    int shapeChoice, calcChoice;
+    double a, b, c, base, height;
+    double area, peri;
+
+    cout << "\n=========== AREA & PERIMETER ===========\n";
+    cout << "Choose a Shape:\n";
+    cout << "1. Square\n";
+    cout << "2. Rectangle\n";
+    cout << "3. Triangle\n";
+    cout << "Enter your choice: ";
+    cin >> shapeChoice;
+
+    cout << "\nChoose Calculation:\n";
+    cout << "1. Area\n";
+    cout << "2. Perimeter\n";
+    cout << "3. Both\n";
+    cout << "Enter your choice: ";
+    cin >> calcChoice;
+
+    switch (shapeChoice) {
+
+    // -------------------- SQUARE --------------------
+    case 1:
+        cout << "Enter side: ";
+        cin >> a;
+
+        area = a * a;
+        peri = 4 * a;
+
+        if (calcChoice == 1)
+            cout << "\nArea of Square = " << area << endl;
+        else if (calcChoice == 2)
+            cout << "\nPerimeter of Square = " << peri << endl;
+        else {
+            cout << "\nArea = " << area << endl;
+            cout << "Perimeter = " << peri << endl;
+        }
+        break;
+
+    // -------------------- RECTANGLE --------------------
+    case 2:
+        cout << "Enter length: ";
+        cin >> a;
+        cout << "Enter width: ";
+        cin >> b;
+
+        area = a * b;
+        peri = 2 * (a + b);
+
+        if (calcChoice == 1)
+            cout << "\nArea of Rectangle = " << area << endl;
+        else if (calcChoice == 2)
+            cout << "\nPerimeter of Rectangle = " << peri << endl;
+        else {
+            cout << "\nArea = " << area << endl;
+            cout << "Perimeter = " << peri << endl;
+        }
+        break;
+
+    // -------------------- TRIANGLE --------------------
+    case 3:
+        if (calcChoice == 1 || calcChoice == 3) {
+            cout << "Enter base: ";
+            cin >> base;
+            cout << "Enter height: ";
+            cin >> height;
+        }
+
+        if (calcChoice == 2 || calcChoice == 3) {
+            cout << "Enter sides a b c: ";
+            cin >> a >> b >> c;
+        }
+
+        area = 0.5 * base * height;
+        peri = a + b + c;
+
+        if (calcChoice == 1)
+            cout << "\nArea of Triangle = " << area << endl;
+        else if (calcChoice == 2)
+            cout << "\nPerimeter of Triangle = " << peri << endl;
+        else {
+            cout << "\nArea = " << area << endl;
+            cout << "Perimeter = " << peri << endl;
+        }
+        break;
+
+    default:
+        cout << "\nInvalid choice!\n";
+    }
+}
+
+void percentProfitLoss() {
+    double cp, sp;
+    cout << "\nEnter Cost Price: "; cin >> cp;
+    cout << "Enter Selling Price: "; cin >> sp;
+
+    if (sp > cp)
+        cout << "\nProfit = " << sp - cp << endl;
+    else if (cp > sp)
+        cout << "\nLoss = " << cp - sp << endl;
+    else
+        cout << "\nNo Profit No Loss\n";
+}
+
+// ---------------------- PHYSICS FUNCTIONS ----------------------
+
+void newtonFirstLaw() {
+    double appliedForce, friction;
+    cout << "\nEnter applied force (N): ";
+    cin >> appliedForce;
+    cout << "Enter friction force (N): ";
+    cin >> friction;
+
+    if (appliedForce == friction)
+        cout << "\nObject remains at rest or constant velocity.\n";
+    else if (appliedForce > friction)
+        cout << "\nObject accelerates (net force exists).\n";
+    else
+        cout << "\nObject stays at rest.\n";
+}
+
+void newtonSecondLaw() {
+    double m, a;
+    cout << "\nEnter mass (kg): ";
+    cin >> m;
+    cout << "Enter acceleration (m/s^2): ";
+    cin >> a;
+
+    cout << "\nForce = m × a = " << m * a << " N\n";
+}
+
+void newtonThirdLaw() {
+    double actionForce;
+    cout << "\nEnter action force (N): ";
+    cin >> actionForce;
+
+    cout << "\nReaction force = " << -actionForce
+         << " N (equal & opposite)\n";
+}
+
+void ohmsLaw() {
+    double v, r;
+    cout << "\nEnter Voltage (V): "; cin >> v;
+    cout << "Enter Resistance (R): "; cin >> r;
+
+    cout << "\nCurrent I = V / R = " << v / r << " A\n";
+}
+
+void kineticPotentialEnergy() {
+    double m, v, h, g = 9.8;
+    cout << "\nEnter mass (kg): "; cin >> m;
+    cout << "Enter velocity (m/s): "; cin >> v;
+    cout << "Enter height (m): "; cin >> h;
+
+    cout << "\nKinetic Energy = " << 0.5 * m * v * v << " J\n";
+    cout << "Potential Energy = " << m * g * h << " J\n";
+}
+
+// ---------------------- MENUS ----------------------
+
+void mathMenu() {
+    int choice;
+    do {
+        cout << "\n---- MATHEMATICS SECTION ----\n";
+        cout << "1. Determinant\n";
+        cout << "2. Distance Between Points\n";
+        cout << "3. Area & Perimeter (Multiple Shapes)\n";
+        cout << "4. Percentage, Profit & Loss\n";
+        cout << "0. Back to Main Menu\n";
+        cout << "Enter choice: ";
+        cin >> choice;
+
+        switch (choice) {
+        case 1: determinant(); break;
+        case 2: distanceBetweenPoints(); break;
+        case 3: areaPerimeter(); break;
+        case 4: percentProfitLoss(); break;
+        case 0: clearScreen(); break;
+        default:
+            cout << "Invalid choice!\n";
+        }
+
+    } while (choice != 0);
+}
+
+void physicsMenu() {
+    int choice;
+    do {
+        cout << "\n---- PHYSICS SECTION ----\n";
+        cout << "1. Newton's First Law\n";
+        cout << "2. Newton's Second Law\n";
+        cout << "3. Newton's Third Law\n";
+        cout << "4. Ohm's Law\n";
+        cout << "5. Kinetic & Potential Energy\n";
+        cout << "0. Back to Main Menu\n";
+        cout << "Enter choice: ";
+        cin >> choice;
+
+        switch (choice) {
+        case 1: newtonFirstLaw(); break;
+        case 2: newtonSecondLaw(); break;
+        case 3: newtonThirdLaw(); break;
+        case 4: ohmsLaw(); break;
+        case 5: kineticPotentialEnergy(); break;
+        case 0: clearScreen(); break;
+        default:
+            cout << "Invalid choice!\n";
+        }
+
+    } while (choice != 0);
+}
+
+// ---------------------- MAIN MENU ----------------------
+
+int main() {
+    int choice;
+    do {
+        clearScreen();
+        cout << "========= SMART PHYSICS & MATH TOOLKIT =========\n";
+        cout << "1. Mathematics Section\n";
+        cout << "2. Physics Section\n";
+        cout << "0. Exit\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        switch (choice) {
+        case 1: mathMenu(); break;
+        case 2: physicsMenu(); break;
+        case 0:
+            cout << "\nGoodbye!\n";
+            break;
+        default:
+            cout << "Invalid choice!\n";
+        }
+
+    } while (choice != 0);
+
+    return 0;
+}
